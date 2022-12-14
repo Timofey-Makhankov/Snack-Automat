@@ -10,6 +10,11 @@
     class VendingMaschine{
         -ArrayList~Item~ items
         +printItemList()
+        +getItemAmount() int
+        +replaceItem(int index, Item item)
+        +addItem(String name, int amount, float price)
+        +changePrice(int index, float newPrice)
+        +fillUp(int index, int amount) Boolean
     }
 
     class Item {

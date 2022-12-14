@@ -1,8 +1,8 @@
 public class Item {
-private String name;
-private int id;
-private float price;
-private int amount;
+    private String name;
+    private int id;
+    private float price;
+    private int amount;
 
     public String getName() {
         return name;
