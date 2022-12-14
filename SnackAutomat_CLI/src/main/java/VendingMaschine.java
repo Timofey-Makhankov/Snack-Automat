@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.ArrayList;
 
 public class VendingMaschine {
@@ -69,6 +70,15 @@ public class VendingMaschine {
                     item.getAmount(),
                     item.getPrice()
             );
+        }
+    }
+
+    public void printVendingMaschine() throws IOException {
+        File file = new File("src/VendingMaschineASCII.txt");
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        String line;
+        while ((line = br.readLine()) != null){
+            System.out.println(line);
         }
     }
 
