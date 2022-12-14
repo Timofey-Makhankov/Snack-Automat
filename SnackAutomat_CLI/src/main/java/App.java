@@ -12,27 +12,23 @@ public class App {
         boolean isRunning = true;
         boolean isAdministrator = false;
 
-        System.out.print("What is Your name?: ");
-        final String username = sc.nextLine();
-        System.out.print("How much Money do you have?: ");
-        final float budget = sc.nextFloat();
+        final String username = getUserInputString(sc, "What is Your name?");
+        final float budget = getUserInputFloat(sc, "How much Money do you have?");
 
         user = new Person(username, budget);
 
         vd.printVendingMaschine();
         while (isRunning) {
-            System.out.println("What do you want to do?: ");
-            String userInput = sc.nextLine();
+            String userInput = getUserInputString(sc, "What do you want to do?");
             switch (userInput) {
                 case "p", "P" -> useVendingMaschine();
                 case "x", "X" -> isRunning = false;
                 case KONAMI_CODE -> isAdministrator = true;
-                default -> System.out.println("Wrong Input. Please try Again!");
+                default -> System.err.println("Wrong Input. Please try Again!");
             }
 
             while (isAdministrator) {
-                System.out.println("What do you want to do?: ");
-                userInput = sc.nextLine();
+                userInput = getUserInputString(sc, "What do you want to do?");
                 switch (userInput) {
                     case "x", "X" -> isAdministrator = false;
                     case "a", "A" -> addItem();
@@ -40,10 +36,25 @@ public class App {
                     case "c", "C" -> fillUpItem();
                     case "f", "F" -> changePriceOfItem();
                     case "p", "P" -> vd.printItemList();
-                    default -> System.out.println("Wrong Input. Please try Again!");
+                    default -> System.err.println("Wrong Input. Please try Again!");
                 }
             }
         }
+    }
+
+    public static String getUserInputString(Scanner sc, String question){
+        System.out.printf("%s: ", question);
+        return sc.nextLine();
+    }
+
+    public static int getUserInputInt(Scanner sc, String question){
+        System.out.printf("%s: ", question);
+        return sc.nextInt();
+    }
+
+    public static float getUserInputFloat(Scanner sc, String question){
+        System.out.printf("%s: ", question);
+        return sc.nextFloat();
     }
 
     public static void useVendingMaschine() {
