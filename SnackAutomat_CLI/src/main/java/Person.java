@@ -10,17 +10,11 @@ public class Person {
         this.budget = budget;
     }
 
-    public String getPersonName() {
-        return personName;
-    }
+    String name = String.format("Name: %s\nBudget: %.2f", personName, budget);
 
-    public float getBudget() {
-        return budget;
-    }
-    public void setPersonName(String personName) {
-        this.personName = personName;
-    }
-    public void setBudget(float budget) {
-        this.budget = budget;
-    }
+    public String getPersonName() {return personName;}
+    public float getBudget() {return budget;}
+
+    public void setPersonName(String personName) {this.personName = personName;}
+    public void setBudget(float budget) {this.budget = budget;}
 }
