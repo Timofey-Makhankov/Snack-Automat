@@ -24,6 +24,7 @@ Getters & Setters are not displayed
         -float price
         -int id
         -int amount
+        +toString() String
     }
 
     class Person {
