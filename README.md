@@ -2,11 +2,14 @@
 
 ## UML
 
+- \+ > public
+- \- > private
+
 ```mermaid
     classDiagram
     class VendingMaschine{
         -ArrayList~Item~ items
-        
+        +printItemList()
     }
 
     class Item {
@@ -19,6 +22,7 @@
     class Person {
         -String name
         -ArrayList~Item~ bag
+        -float money
     }
 
     Item --|>VendingMaschine
