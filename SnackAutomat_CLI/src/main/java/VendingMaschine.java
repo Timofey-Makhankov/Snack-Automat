@@ -30,8 +30,10 @@ public class VendingMaschine {
      * @param amount How many Items are in the Vending Maschine
      * @param price  the cost of the Item
      */
-    public void addItem(int id, String name, int amount, float price) {
-        this.items.add(new Item(name, id, price, amount));
+    public void addItem(int id, String name, int amount, float price, String emoji) {
+        Item newItem = new Item(name, id, price, amount);
+        newItem.setImage(emoji);
+        this.items.add(newItem);
     }
 
     /**
@@ -68,8 +70,9 @@ public class VendingMaschine {
     public void printItemList() {
         System.out.print("Item: Name, Amount, Price\n");
         for (Item item : this.items) {
-            System.out.printf("%d: %s - %d - %.2fCHF\n",
+            System.out.printf("%d: %s %s - %d - %.2fCHF\n",
                     item.getId(),
+                    item.getImage(),
                     item.getName(),
                     item.getAmount(),
                     item.getPrice()
@@ -77,7 +80,7 @@ public class VendingMaschine {
         }
     }
 
-    public void printVendingMaschine() throws IOException {
+    public void printTitle() throws IOException {
         File file = new File("src/VendingMaschineASCII.txt");
         BufferedReader br = new BufferedReader(new FileReader(file));
         String line;

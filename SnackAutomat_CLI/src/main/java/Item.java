@@ -4,6 +4,8 @@ public class Item {
     private float price;
     private int amount;
 
+    private String image = " ";
+
     public Item(String name, int id, float price, int amount) {
         this.name = name;
         this.id = id;
@@ -24,6 +26,10 @@ public class Item {
         return amount;
     }
 
+    public String getImage() {
+        return image;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -35,5 +41,9 @@ public class Item {
     }
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
