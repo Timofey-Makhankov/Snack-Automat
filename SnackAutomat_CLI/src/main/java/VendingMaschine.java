@@ -2,25 +2,50 @@ import java.util.ArrayList;
 
 public class VendingMaschine {
     private ArrayList<Item> items;
-    private int maxItems = 10;
+    private final int maxItems = 10;
 
+    /**
+     * Constructor: Sets the Maximum Amount in one Item and initialize the Item Array
+     */
     public VendingMaschine(){
         int initialCapacity = 36;
         this.items = new ArrayList<>(initialCapacity);
     }
 
+    /**
+     * Get The Amount of Items in the ArrayList
+     * @return the Amount of Items in the Vending Maschine
+     */
     public int getItemAmount(){
         return this.items.size();
     }
 
+    /**
+     * Adds an Item to the Vending Maschine Array
+     * @param id specifier for the Item
+     * @param name given name for the Item
+     * @param amount How many Items are in the Vending Maschine
+     * @param price the cost of the Item
+     */
     public void addItem(int id, String name, int amount, float price){
         this.items.add(new Item(name, id, price, amount));
     }
 
+    /**
+     * to be able to change the Price of an Item
+     * @param index What Item to change the Price
+     * @param newPrice Given Price to be changed to
+     */
     public void changePrice(int index, float newPrice){
         this.items.get(index).setPrice(newPrice);
     }
 
+    /**
+     * Fill up an Item to a desired amount
+     * @param index What Item to fill up
+     * @param amount by how much to fill up
+     * @return true if it was able to fill up, otherwise returns false if not
+     */
     public Boolean fillUp(int index, int amount){
         int itemAmount = this.items.get(index).getAmount();
         itemAmount += amount;
@@ -32,8 +57,11 @@ public class VendingMaschine {
         }
     }
 
+    /**
+     * prints out the Whole Item Array from a Vending Maschine
+     */
     public void printItemList(){
-        System.out.printf("Item: Name, Amount, Price\n");
+        System.out.print("Item: Name, Amount, Price\n");
         for (Item item: this.items){
             System.out.printf("%d: %s - %d - %.2fCHF\n",
                     item.getId(),
@@ -44,6 +72,7 @@ public class VendingMaschine {
         }
     }
 
+    // Getters
     public ArrayList<Item> getItems() {
         return items;
     }
@@ -52,6 +81,7 @@ public class VendingMaschine {
         return maxItems;
     }
 
+    // Setters
     public void setItems(ArrayList<Item> items) {
         this.items = items;
     }

@@ -5,6 +5,8 @@
 - \+ > public
 - \- > private
 
+Getters & Setters are not displayed
+
 ```mermaid
     classDiagram
     class VendingMaschine{
