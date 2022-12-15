@@ -12,6 +12,7 @@ public class Person {
 
     public String toString(){
         return String.format("Name: %s\nBudget: %.2f", personName, budget);
+        for(int i = 0; i < bag.size(); i++) System.out.println((bag.get(i)).toString());
     }
 
     public String getPersonName() {return personName;}
