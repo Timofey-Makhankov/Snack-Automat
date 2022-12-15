@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class VendingMaschine {
     private ArrayList<Item> items;
@@ -86,7 +85,7 @@ public class VendingMaschine {
                 this.items) {
             System.out.printf("%d    %s   %.2fCHF", item.getId(), item.getName(), item.getPrice());
         }
-        }
+
     }
 
     /**
