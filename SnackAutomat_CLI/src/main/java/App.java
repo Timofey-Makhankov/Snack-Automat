@@ -67,22 +67,45 @@ public class App {
     }
 
     public static String getUserInputString(String question) {
-        System.out.printf("%s: ", question);
-        return scanner.nextLine();
+        while (true) {
+            System.out.printf("%s: ", question);
+            String temp = scanner.nextLine();
+            try {
+                int num;
+                num = Integer.parseInt(temp);
+                System.out.println("That doesn't work. Please enter a valid answer");
+            } catch (Exception e) {
+                return temp;
+            }
+        }
     }
 
     public static int getUserInputInt(String question) {
-        System.out.printf("%s: ", question);
-        int result = scanner.nextInt();
-        scanner.nextLine();
-        return result;
+        while (true) {
+            System.out.printf("%s: ", question);
+            try {
+                int result = scanner.nextInt();
+                scanner.nextLine();
+                return result;
+            } catch (Exception e) {
+                System.out.println("That doesn't work. Please enter a valid answer");
+                scanner.nextLine();
+            }
+        }
     }
 
     public static float getUserInputFloat(String question) {
-        System.out.printf("%s: ", question);
-        float result = scanner.nextFloat();
-        scanner.nextLine();
-        return result;
+        while (true) {
+            System.out.printf("%s: ", question);
+            try {
+                float result = scanner.nextFloat();
+                scanner.nextLine();
+                return result;
+            } catch (Exception e) {
+                System.out.println("That doesn't work. Please enter a valid answer");
+                scanner.nextLine();
+            }
+        }
     }
 
     public static String getUserEmojiInput() {
@@ -124,12 +147,12 @@ public class App {
                     float pay = chosenItem.getPrice();
                     do {
                         float userInputMoney = getUserInputFloat("Please Insert Money");
-                        if (userInputMoney == -1){
+                        if (userInputMoney == -1) {
                             return;
                         } else {
                             user.setBudget(user.getBudget() - userInputMoney);
                             pay -= userInputMoney;
-                            if (pay <= 0){
+                            if (pay <= 0) {
                                 user.setBudget(user.getBudget() + Math.abs(pay));
                                 user.addToBag(chosenItem);
                                 addingMoney = false;
