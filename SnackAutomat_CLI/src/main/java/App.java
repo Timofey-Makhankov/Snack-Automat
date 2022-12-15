@@ -35,7 +35,13 @@ public class App {
                     isAdministrator = true;
                     System.out.println("Entering Admin Mode...");
                 }
-                case "h", "H" -> System.out.println("Enter the KONAMI Code");
+                case "h", "H" -> System.out.println("Enter the KONAMI Code\n" + """
+                           ↑
+                           0
+                        ← 3 1 →  Ⓐ Ⓑ
+                           2
+                           ↓
+                        """);
                 default -> System.err.println("Wrong Input. Please try Again!");
             }
 

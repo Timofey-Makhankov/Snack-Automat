@@ -8,7 +8,7 @@ public class VendingMaschine {
      * Constructor: Sets the Maximum Amount in one Item and initialize the Item Array
      */
     public VendingMaschine() {
-        int initialCapacity = 36;
+        int initialCapacity = 9;
         this.items = new ArrayList<>(initialCapacity);
     }
 

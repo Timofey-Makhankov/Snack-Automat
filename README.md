@@ -31,6 +31,7 @@ Getters & Setters are not displayed
         -String name
         -ArrayList~Item~ bag
         -float money
+        +toString() String
     }
 
     Item --|>VendingMaschine
