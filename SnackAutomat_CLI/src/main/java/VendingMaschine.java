@@ -96,13 +96,13 @@ public class VendingMaschine {
                 System.out.print("_______________|");
             }
             System.out.println();
-
         }
-        System.out.println("Id      product     price\n");
+        System.out.println();
+        System.out.println("Id      product(price)\n");
         for (Item item :
                 this.items) {
-            System.out.printf("%d    %s   %.2fCHF\n", item.getId(), item.getName(), item.getPrice());
-        }
+            System.out.printf("%d       %s(%.2fCHF)\n", item.getId(), item.getName(), item.getPrice());
+        } System.out.println();
     }
 
     /**
@@ -130,7 +130,7 @@ public class VendingMaschine {
         try {
             return this.items.get(j + i * 3);
         } catch (Exception e) {
-            return new Item("None", 23, 0, 25);
+            return new Item("None", 0, 0, 0);
         }
     }
 
