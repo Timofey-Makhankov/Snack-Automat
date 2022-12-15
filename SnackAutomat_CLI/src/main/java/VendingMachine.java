@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.ArrayList;
 
-public class VendingMaschine {
+public class VendingMachine {
     private ArrayList<Item> items;
     private int width;
     private int height;
@@ -9,7 +9,7 @@ public class VendingMaschine {
     /**
      * Constructor: Sets the Maximum Amount in one Item and initialize the Item Array
      */
-    public VendingMaschine(int row, int column) {
+    public VendingMachine(int row, int column) {
         this.width = column;
         this.height = row;
         int initialCapacity = column * row;
@@ -19,14 +19,14 @@ public class VendingMaschine {
     /**
      * Get The Amount of Items in the ArrayList
      *
-     * @return the Amount of Items in the Vending Maschine
+     * @return the Amount of Items in the Vending Machine
      */
     public int getItemAmount() {
         return this.items.size();
     }
 
     /**
-     * Adds an Item to the Vending Maschine Array
+     * Adds an Item to the Vending Machine Array
      *
      * @param item give an item to be added
      */
@@ -106,7 +106,7 @@ public class VendingMaschine {
     }
 
     /**
-     * prints out the Whole Item Array from a Vending Maschine
+     * prints out the Whole Item Array from a Vending Machine
      */
     public void printItemList() {
         System.out.print("Item: Name, Amount, Price\n");
@@ -118,7 +118,7 @@ public class VendingMaschine {
     }
 
     public void printTitle() throws IOException {
-        File file = new File("src/VendingMaschineASCII.txt");
+        File file = new File("src/VendingMachineASCII.txt");
         BufferedReader br = new BufferedReader(new FileReader(file));
         String line;
         while ((line = br.readLine()) != null) {

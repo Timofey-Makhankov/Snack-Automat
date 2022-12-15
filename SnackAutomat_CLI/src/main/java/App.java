@@ -9,7 +9,7 @@ public class App {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
-        VendingMaschine vd = new VendingMaschine(3, 4);
+        VendingMachine vd = new VendingMachine(3, 4);
 
         final String KONAMI_CODE = "00223131ab";
 
@@ -27,7 +27,7 @@ public class App {
             printStartCommands();
             String userInput = getUserInputString("What do you want to do?");
             switch (userInput) {
-                case "u", "U" -> useVendingMaschine(vd, user);
+                case "u", "U" -> useVendingMachine(vd, user);
                 case "x", "X" -> {
                     isRunning = false;
                     System.out.println("Exiting The Program...");
@@ -127,7 +127,7 @@ public class App {
         }
     }
 
-    public static void useVendingMaschine(VendingMaschine vd, Person user) {
+    public static void useVendingMachine(VendingMachine vd, Person user) {
         Item chosenItem = null;
         boolean addingMoney = true;
         while (true) {
@@ -177,17 +177,17 @@ public class App {
         return item;
     }
 
-    public static void replaceItem(VendingMaschine vd) {
+    public static void replaceItem(VendingMachine vd) {
         vd.printItemList();
         vd.replaceItem(getUserInputInt("What Item do you choose?"), createItem());
     }
 
-    public static void fillUpItem(VendingMaschine vd) {
+    public static void fillUpItem(VendingMachine vd) {
         vd.printItemList();
         vd.fillUp(getUserInputInt("What Item do you choose?"), getUserInputInt("How much do you want to add?"));
     }
 
-    public static void changePriceOfItem(VendingMaschine vd) {
+    public static void changePriceOfItem(VendingMachine vd) {
         vd.printItemList();
         vd.changePrice(getUserInputInt("What Item do you choose?"), getUserInputFloat("What price do you give?"));
     }
