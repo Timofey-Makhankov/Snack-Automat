@@ -3,12 +3,16 @@ import java.util.ArrayList;
 
 public class VendingMaschine {
     private ArrayList<Item> items;
+    private int width;
+    private int height;
 
     /**
      * Constructor: Sets the Maximum Amount in one Item and initialize the Item Array
      */
-    public VendingMaschine() {
-        int initialCapacity = 9;
+    public VendingMaschine(int row, int column) {
+        this.width = column;
+        this.height = row;
+        int initialCapacity = column * row;
         this.items = new ArrayList<>(initialCapacity);
     }
 
@@ -27,7 +31,9 @@ public class VendingMaschine {
      * @param item give an item to be added
      */
     public void addItem(Item item) {
-        this.items.add(item);
+        if (getHeight() * getWidth() > this.getItemAmount()) {
+            this.items.add(item);
+        }
     }
 
     public void replaceItem(int index, Item item) {
@@ -83,8 +89,24 @@ public class VendingMaschine {
         return items;
     }
 
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
     // Setters
     public void setItems(ArrayList<Item> items) {
         this.items = items;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
     }
 }

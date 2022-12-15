@@ -23,6 +23,10 @@ public class Person {
         return String.format("Name: %s\nBudget: %.2f\nBag:\n" + temp, personName, budget);
     }
 
+    public void addToBag(Item item){
+        this.bag.add(item);
+    }
+
     public String getPersonName() {
         return personName;
     }
@@ -31,11 +35,19 @@ public class Person {
         return budget;
     }
 
+    public ArrayList<Item> getBag() {
+        return bag;
+    }
+
     public void setPersonName(String personName) {
         this.personName = personName;
     }
 
     public void setBudget(float budget) {
         this.budget = budget;
+    }
+
+    public void setBag(ArrayList<Item> bag) {
+        this.bag = bag;
     }
 }

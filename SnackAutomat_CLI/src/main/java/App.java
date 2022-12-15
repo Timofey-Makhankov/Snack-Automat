@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
@@ -8,7 +9,7 @@ public class App {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws IOException {
-        VendingMaschine vd = new VendingMaschine();
+        VendingMaschine vd = new VendingMaschine(3, 4);
 
         final String KONAMI_CODE = "00223131ab";
 
@@ -26,7 +27,7 @@ public class App {
             printStartCommands();
             String userInput = getUserInputString("What do you want to do?");
             switch (userInput) {
-                case "u", "U" -> useVendingMaschine();
+                case "u", "U" -> useVendingMaschine(vd, user);
                 case "x", "X" -> {
                     isRunning = false;
                     System.out.println("Exiting The Program...");
@@ -103,8 +104,43 @@ public class App {
         }
     }
 
-    public static void useVendingMaschine() {
-        //TODO implement the function
+    public static void useVendingMaschine(VendingMaschine vd, Person user) {
+        Item chosenItem = null;
+        boolean addingMoney = true;
+        while (true) {
+            int userInput = getUserInputInt("What Item do you want to get?");
+            if (userInput == -1) {
+                System.err.println("Exited");
+                return;
+            } else {
+                if (isInList(userInput, vd.getItems())) {
+                    for (Item item : vd.getItems()) {
+                        if (item.getId() == userInput) {
+                            chosenItem = item;
+                            break;
+                        }
+                    }
+                    assert chosenItem != null;
+                    float pay = chosenItem.getPrice();
+                    do {
+                        float userInputMoney = getUserInputFloat("Please Insert Money");
+                        if (userInputMoney == -1){
+                            return;
+                        } else {
+                            user.setBudget(user.getBudget() - userInputMoney);
+                            pay -= userInputMoney;
+                            if (pay <= 0){
+                                user.setBudget(user.getBudget() + Math.abs(pay));
+                                user.addToBag(chosenItem);
+                                addingMoney = false;
+                            }
+                        }
+                    } while (addingMoney);
+                } else {
+                    System.err.println("The Item was not found");
+                }
+            }
+        }
     }
 
     public static Item createItem() {
@@ -157,5 +193,14 @@ public class App {
                 u -> Use the Vending machine
                 h -> ???
                 """);
+    }
+
+    public static Boolean isInList(int input, ArrayList<Item> array) {
+        for (Item item : array) {
+            if (input == item.getId()) {
+                return true;
+            }
+        }
+        return false;
     }
 }
