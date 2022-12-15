@@ -3,7 +3,6 @@ import java.util.ArrayList;
 
 public class VendingMaschine {
     private ArrayList<Item> items;
-    private final int maxItems = 10;
 
     /**
      * Constructor: Sets the Maximum Amount in one Item and initialize the Item Array
@@ -25,15 +24,14 @@ public class VendingMaschine {
     /**
      * Adds an Item to the Vending Maschine Array
      *
-     * @param id     specifier for the Item
-     * @param name   given name for the Item
-     * @param amount How many Items are in the Vending Maschine
-     * @param price  the cost of the Item
+     * @param item give an item to be added
      */
-    public void addItem(int id, String name, int amount, float price, String emoji) {
-        Item newItem = new Item(name, id, price, amount);
-        newItem.setImage(emoji);
-        this.items.add(newItem);
+    public void addItem(Item item) {
+        this.items.add(item);
+    }
+
+    public void replaceItem(int index, Item item) {
+        this.items.set(index, item);
     }
 
     /**
@@ -51,17 +49,12 @@ public class VendingMaschine {
      *
      * @param index  What Item to fill up
      * @param amount by how much to fill up
-     * @return true if it was able to fill up, otherwise returns false if not
      */
-    public Boolean fillUp(int index, int amount) {
+    public void fillUp(int index, int amount) {
         int itemAmount = this.items.get(index).getAmount();
         itemAmount += amount;
-        if (itemAmount > this.maxItems + 1) {
-            this.items.get(index).setAmount(itemAmount);
-            return true;
-        } else {
-            return false;
-        }
+
+        this.items.get(index).setAmount(itemAmount);
     }
 
     /**
@@ -69,14 +62,17 @@ public class VendingMaschine {
      */
     public void printItemList() {
         System.out.print("Item: Name, Amount, Price\n");
+        int index = 0;
         for (Item item : this.items) {
-            System.out.printf("%d: %s %s - %d - %.2fCHF\n",
+            System.out.printf("%d: %d- %s %s - %d - %.2fCHF\n",
+                    index,
                     item.getId(),
                     item.getImage(),
                     item.getName(),
                     item.getAmount(),
                     item.getPrice()
             );
+            index++;
         }
     }
 
@@ -92,10 +88,6 @@ public class VendingMaschine {
     // Getters
     public ArrayList<Item> getItems() {
         return items;
-    }
-
-    public int getMaxItems() {
-        return maxItems;
     }
 
     // Setters

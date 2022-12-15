@@ -10,7 +10,9 @@ public class Person {
         this.budget = budget;
     }
 
-    String name = String.format("Name: %s\nBudget: %.2f", personName, budget);
+    public String toString(){
+        return String.format("Name: %s\nBudget: %.2f", personName, budget);
+    }
 
     public String getPersonName() {return personName;}
     public float getBudget() {return budget;}
