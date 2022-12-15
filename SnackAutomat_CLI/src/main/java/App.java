@@ -131,6 +131,7 @@ public class App {
         Item chosenItem = null;
         boolean addingMoney = true;
         while (true) {
+            vd.ItemGrid();
             int userInput = getUserInputInt("What Item do you want to get?");
             if (userInput == -1) {
                 System.err.println("Exited");

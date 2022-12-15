@@ -67,25 +67,42 @@ public class VendingMaschine {
      * prints out the Item Grid with their respective id, name and price
      */
     public void ItemGrid() {
-        for (int i = 0; i <= 3; i++){
-            for (int j = 0; j <= 3; j++){
-                Item item =  this.items.get(j + i * 3);
-                System.out.print("             |");
-                System.out.print("   ______    |");
-                System.out.print("  |      |   |");
-                System.out.printf("  |  %s  |   |" + item.getImage());
-                System.out.print("  |______|   |");
-                System.out.printf("   id: %3d    |" + this.items.get(j + i * 3).getId());
-                System.out.print("_____________|");
-                System.out.println("\t");
+        for (int i = 0; i <= this.height; i++) {
+            for (int l = 0; l < this.width; l++) {
+                System.out.print("               |");
             }
+            System.out.println();
+            for (int l = 0; l < this.width; l++) {
+                System.out.print("               |");
+            }
+            System.out.println();
+            for (int l = 0; l < this.width; l++) {
+                System.out.printf("       %2s      |", getItem(i, l).getImage());
+            }
+            System.out.println();
+            for (int l = 0; l < this.width; l++) {
+                System.out.print("               |");
+            }
+            System.out.println();
+            for (int l = 0; l < this.width; l++) {
+                System.out.printf("  amount: %2d   |", getItem(i, l).getAmount());
+            }
+            System.out.println();
+            for (int l = 0; l < this.width; l++) {
+                System.out.printf("    id: %3d    |", getItem(i, l).getId());
+            }
+            System.out.println();
+            for (int l = 0; l < this.width; l++) {
+                System.out.print("_______________|");
+            }
+            System.out.println();
+
         }
         System.out.println("Id      product     price\n");
         for (Item item :
                 this.items) {
-            System.out.printf("%d    %s   %.2fCHF", item.getId(), item.getName(), item.getPrice());
+            System.out.printf("%d    %s   %.2fCHF\n", item.getId(), item.getName(), item.getPrice());
         }
-
     }
 
     /**
@@ -106,6 +123,14 @@ public class VendingMaschine {
         String line;
         while ((line = br.readLine()) != null) {
             System.out.println(line);
+        }
+    }
+
+    public Item getItem(int i, int j) {
+        try {
+            return this.items.get(j + i * 3);
+        } catch (Exception e) {
+            return new Item("None", 23, 0, 25);
         }
     }
 
