@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class VendingMaschine {
     private ArrayList<Item> items;
@@ -61,6 +62,31 @@ public class VendingMaschine {
         itemAmount += amount;
 
         this.items.get(index).setAmount(itemAmount);
+    }
+
+    /**
+     * prints out the Item Grid with their respective id, name and price
+     */
+    public void ItemGrid() {
+        for (int i = 0; i <= 3; i++){
+            for (int j = 0; j <= 3; j++){
+                Item item =  this.items.get(j + i * 3);
+                System.out.print("             |");
+                System.out.print("   ______    |");
+                System.out.print("  |      |   |");
+                System.out.printf("  |  %s  |   |" + item.getImage());
+                System.out.print("  |______|   |");
+                System.out.printf("   id: %3d    |" + this.items.get(j + i * 3).getId());
+                System.out.print("_____________|");
+                System.out.println("\t");
+            }
+        }
+        System.out.println("Id      product     price\n");
+        for (Item item :
+                this.items) {
+            System.out.printf("%d    %s   %.2fCHF", item.getId(), item.getName(), item.getPrice());
+        }
+        }
     }
 
     /**
