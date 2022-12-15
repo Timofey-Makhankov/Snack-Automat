@@ -64,14 +64,7 @@ public class VendingMaschine {
         System.out.print("Item: Name, Amount, Price\n");
         int index = 0;
         for (Item item : this.items) {
-            System.out.printf("%d: %d- %s %s - %d - %.2fCHF\n",
-                    index,
-                    item.getId(),
-                    item.getImage(),
-                    item.getName(),
-                    item.getAmount(),
-                    item.getPrice()
-            );
+            System.out.printf("%d: " + item, index);
             index++;
         }
     }

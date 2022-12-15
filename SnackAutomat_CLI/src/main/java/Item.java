@@ -13,15 +13,22 @@ public class Item {
         this.amount = amount;
     }
 
+    public String toString() {
+        return String.format("%d - %s %s - %d - %.2fCHF\n", getId(), getImage(), getName(), getAmount(), getPrice());
+    }
+
     public String getName() {
         return name;
     }
+
     public int getId() {
         return id;
     }
+
     public float getPrice() {
         return price;
     }
+
     public int getAmount() {
         return amount;
     }
@@ -33,12 +40,15 @@ public class Item {
     public void setName(String name) {
         this.name = name;
     }
+
     public void setId(int id) {
         this.id = id;
     }
+
     public void setPrice(float price) {
         this.price = price;
     }
+
     public void setAmount(int amount) {
         this.amount = amount;
     }
