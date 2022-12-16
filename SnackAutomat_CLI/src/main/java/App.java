@@ -17,8 +17,8 @@ public class App {
         boolean isRunning = true;
         boolean isAdministrator = false;
 
-        final String username = getUserInputString("What is Your name?");
-        final float budget = getUserInputFloat("How much Money do you have?");
+        final String username = getUserInputString("What is your name?");
+        final float budget = getUserInputFloat("How much money do you have?");
 
         user = new Person(username, budget);
 
@@ -30,20 +30,20 @@ public class App {
                 case "u", "U" -> useVendingMachine(vd, user);
                 case "x", "X" -> {
                     isRunning = false;
-                    System.out.println("Exiting The Program...");
+                    System.out.println("Exiting the program...");
                 }
                 case KONAMI_CODE -> {
                     isAdministrator = true;
-                    System.out.println("Entering Admin Mode...");
+                    System.out.println("Entering admin mode...");
                 }
-                case "h", "H" -> System.out.println("Enter the KONAMI Code\n" + """
+                case "h", "H" -> System.out.println("Enter the KONAMI code\n" + """
                            ↑
                            0
                         ← 3 1 →  Ⓐ Ⓑ
                            2
                            ↓
                         """);
-                default -> System.out.println("Wrong Input. Please try Again!");
+                default -> System.out.println("Wrong input. Please try again!");
             }
 
             while (isAdministrator) {
@@ -52,7 +52,7 @@ public class App {
                 switch (userInput) {
                     case "x", "X" -> {
                         isAdministrator = false;
-                        System.out.println("Exiting Admin Mode");
+                        System.out.println("Exiting admin mode");
                     }
                     case "a", "A" -> vd.addItem(createItem());
                     case "r", "R" -> replaceItem(vd);
@@ -60,7 +60,7 @@ public class App {
                     case "c", "C" -> changePriceOfItem(vd);
                     case "p", "P" -> vd.printItemList();
                     case "b", "B" -> System.out.println(user);
-                    default -> System.out.println("Wrong Input. Please try Again!");
+                    default -> System.out.println("Wrong input. Please try again!");
                 }
             }
         }
@@ -109,7 +109,7 @@ public class App {
 
     public static String getUserEmojiInput() {
         printEmoji();
-        int userInput = getUserInputInt("What Emoji describes the chosen Item the best?");
+        int userInput = getUserInputInt("What emoji describes the chosen item the best?");
         switch (userInput) {
             case 1 -> {
                 return EMOJIS[0];
@@ -131,7 +131,7 @@ public class App {
         boolean addingMoney = true;
         while (true) {
             vd.ItemGrid();
-            int userInput = getUserInputInt("What Item do you want to get?");
+            int userInput = getUserInputInt("What item do you want to get?");
             if (userInput == -1) {
                 System.out.println("Exited");
                 return;
@@ -146,7 +146,7 @@ public class App {
                     assert chosenItem != null;
                     float pay = chosenItem.getPrice();
                     do {
-                        float userInputMoney = getUserInputFloat("Please Insert Money");
+                        float userInputMoney = getUserInputFloat("Please insert money");
                         if (userInputMoney == -1) {
                             return;
                         } else {
@@ -160,7 +160,7 @@ public class App {
                         }
                     } while (addingMoney);
                 } else {
-                    System.out.println("The Item was not found");
+                    System.out.println("The item was not found");
                 }
             }
         }
@@ -168,27 +168,27 @@ public class App {
 
     public static Item createItem() {
         Item item = new Item(
-                getUserInputString("What is this Item?"),
-                getUserInputInt("What Number do you give?"),
-                getUserInputFloat("What's the Price?"),
-                getUserInputInt("What is the Amount?"));
+                getUserInputString("What is this item?"),
+                getUserInputInt("What number do you give?"),
+                getUserInputFloat("What's the price?"),
+                getUserInputInt("What is the amount?"));
         item.setImage(getUserEmojiInput());
         return item;
     }
 
     public static void replaceItem(VendingMachine vd) {
         vd.printItemList();
-        vd.replaceItem(getUserInputInt("What Item do you choose?"), createItem());
+        vd.replaceItem(getUserInputInt("What item do you choose?"), createItem());
     }
 
     public static void fillUpItem(VendingMachine vd) {
         vd.printItemList();
-        vd.fillUp(getUserInputInt("What Item do you choose?"), getUserInputInt("How much do you want to add?"));
+        vd.fillUp(getUserInputInt("What item do you choose?"), getUserInputInt("How much do you want to add?"));
     }
 
     public static void changePriceOfItem(VendingMachine vd) {
         vd.printItemList();
-        vd.changePrice(getUserInputInt("What Item do you choose?"), getUserInputFloat("What price do you give?"));
+        vd.changePrice(getUserInputInt("What item do you choose?"), getUserInputFloat("What price do you give?"));
     }
 
     public static void printEmoji() {
@@ -201,19 +201,19 @@ public class App {
     public static void printAdminCommands() {
         System.out.print("""
                 x -> Exit
-                a -> Add Item to Vending Machine
-                r -> replace an Item in Vending Machine
-                f -> fill up an Item
-                c -> change price of an Item
-                p -> show the Items in the Vending Machine
-                b -> show Budget of your account
+                a -> Add item to vending machine
+                r -> replace an item in vending machine
+                f -> fill up an item
+                c -> change price of an item
+                p -> show the items in the vending machine
+                b -> show budget of your account
                 """);
     }
 
     public static void printStartCommands() {
         System.out.print("""
                 x -> Exit
-                u -> Use the Vending machine
+                u -> Use the vending machine
                 h -> ???
                 """);
     }

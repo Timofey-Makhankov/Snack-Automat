@@ -109,7 +109,7 @@ public class VendingMachine {
      * prints out the Whole Item Array from a Vending Machine
      */
     public void printItemList() {
-        System.out.print("Item: Name, Amount, Price\n");
+        System.out.print("Item: name, amount, price\n");
         int index = 0;
         for (Item item : this.items) {
             System.out.printf("%d: " + item, index);
