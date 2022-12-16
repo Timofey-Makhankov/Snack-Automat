@@ -145,8 +145,10 @@ public class App {
                     }
                     assert chosenItem != null;
                     float pay = chosenItem.getPrice();
+                    float leftMoney = pay;
                     do {
-                        float userInputMoney = getUserInputFloat("Please insert money");
+                        float userInputMoney = getUserInputFloat(String.format("Please insert money %.2f", leftMoney));
+                        leftMoney = pay - userInputMoney;
                         if (userInputMoney == -1) {
                             return;
                         } else {
