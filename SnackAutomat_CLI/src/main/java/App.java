@@ -137,16 +137,26 @@ public class App {
                 return;
             } else {
                 if (isInList(userInput, vd.getItems())) {
+                    int index = 0;
                     for (Item item : vd.getItems()) {
+                        index += 1;
                         if (item.getId() == userInput) {
-                            chosenItem = item;
-                            break;
+                            if (item.getAmount() == 0){
+                                System.out.println("Sorry this product isn't avaible");
+                            }else {
+                                chosenItem = item;
+                                addingMoney = true;
+                                break;
+                            }
                         }
+                    }
+                    if (chosenItem == null){
+                        addingMoney = false;
                     }
                     assert chosenItem != null;
                     float pay = chosenItem.getPrice();
                     float leftMoney = pay;
-                    do {
+                    while (addingMoney) {
                         float userInputMoney = getUserInputFloat(String.format("Please insert money %.2f", leftMoney));
                         leftMoney = pay - userInputMoney;
                         if (userInputMoney == -1) {
@@ -157,10 +167,11 @@ public class App {
                             if (pay <= 0) {
                                 user.setBudget(user.getBudget() + Math.abs(pay));
                                 user.addToBag(chosenItem);
+                                vd.getItems().get(index - 1).setAmount(vd.getItems().get(index - 1).getAmount() - 1);
                                 addingMoney = false;
                             }
                         }
-                    } while (addingMoney);
+                    }
                 } else {
                     System.out.println("The item was not found");
                 }
