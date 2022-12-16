@@ -13,6 +13,8 @@ public class App {
 
         final String KONAMI_CODE = "00223131ab";
 
+        vd.addItem(new Item("Coke", 23, 0.9f, 3));
+
         Person user;
         boolean isRunning = true;
         boolean isAdministrator = false;
@@ -59,11 +61,25 @@ public class App {
                     case "f", "F" -> fillUpItem(vd);
                     case "c", "C" -> changePriceOfItem(vd);
                     case "p", "P" -> vd.printItemList();
-                    case "b", "B" -> System.out.println(user);
+                    case "b", "B" -> printBag(user); //System.out.println(user);
                     default -> System.out.println("Wrong input. Please try again!");
                 }
             }
         }
+    }
+
+    public static void printBag(Person person){
+        System.out.printf("Name: %s\nBudget: %.2f\nBag:\n", person.getPersonName(), person.getBudget());
+        ArrayList<Item> bag = person.getBag();
+        try {
+            for (Item item:bag) {
+                System.out.printf("%d %s %s %.2f\n", item.getId(), item.getImage(), item.getName(), item.getPrice());
+            }
+        } catch (Exception e){
+            System.out.println("Empty");
+        }
+
+
     }
 
     public static String getUserInputString(String question) {
