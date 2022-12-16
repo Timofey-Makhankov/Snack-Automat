@@ -43,7 +43,7 @@ public class App {
                            2
                            ↓
                         """);
-                default -> System.err.println("Wrong Input. Please try Again!");
+                default -> System.out.println("Wrong Input. Please try Again!");
             }
 
             while (isAdministrator) {
@@ -60,7 +60,7 @@ public class App {
                     case "c", "C" -> changePriceOfItem(vd);
                     case "p", "P" -> vd.printItemList();
                     case "b", "B" -> System.out.println(user);
-                    default -> System.err.println("Wrong Input. Please try Again!");
+                    default -> System.out.println("Wrong Input. Please try Again!");
                 }
             }
         }
@@ -133,7 +133,7 @@ public class App {
             vd.ItemGrid();
             int userInput = getUserInputInt("What Item do you want to get?");
             if (userInput == -1) {
-                System.err.println("Exited");
+                System.out.println("Exited");
                 return;
             } else {
                 if (isInList(userInput, vd.getItems())) {
@@ -160,7 +160,7 @@ public class App {
                         }
                     } while (addingMoney);
                 } else {
-                    System.err.println("The Item was not found");
+                    System.out.println("The Item was not found");
                 }
             }
         }
