@@ -71,8 +71,7 @@ public class App {
             System.out.printf("%s: ", question);
             String temp = scanner.nextLine();
             try {
-                int num;
-                num = Integer.parseInt(temp);
+                Integer.parseInt(temp);
                 System.out.println("That doesn't work. Please enter a valid answer");
             } catch (Exception e) {
                 return temp;
